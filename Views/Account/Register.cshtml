@@ -1,0 +1,137 @@
+﻿@model RentCarWeb.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="content">
+        <div class="Title">Registrasi ke RentCar</div>
+
+        <form method="post" asp-action="Register">
+            <div class="form-group">
+                <label asp-for="NamaLengkap">Nama Lengkap</label>
+                <input asp-for="NamaLengkap" class="form-control" placeholder="Masukkan nama lengkap Anda" />
+                <span asp-validation-for="NamaLengkap" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Masukkan email Anda" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="Masukkan password Anda" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RePassword">Re-Password</label>
+                <input asp-for="RePassword" class="form-control" type="password" placeholder="Masukkan kembali password Anda" />
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomorTelp">Nomor Telefon</label>
+                <input asp-for="NomorTelp" class="form-control" type="tel" placeholder="Masukkan nomor telefon Anda" />
+                <span asp-validation-for="NomorTelp" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Alamat">Alamat</label>
+                <input asp-for="Alamat" class="form-control" placeholder="Masukkan alamat Anda" />
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+
+            <div class="registrasibtn">
+                <button type="submit" class="btn btn-primary">Registrasi</button>
+            </div>
+        </form>
+
+        <div class="login">Sudah punya akun? <a href="Login">Login disini</a></div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        background-color: #f6f2f7;
+        font-family: Arial, sans-serif;
+    }
+
+    .content {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #e6ccf7;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .Title {
+        color: #6d597a;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #6d597a;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .registrasibtn {
+        margin-top: 25px;
+    }
+
+    button {
+        width: 100%;
+        background-color: #ffcad4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #ffe9ec;
+        }
+
+    .login {
+        text-align: center;
+        color: #987784;
+        margin-top: 15px;
+    }
+
+    .login a {
+        color: #987784;
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>

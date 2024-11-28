@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="content">
+        <div class="Title">Login ke RentCar</div>
+        <form asp-action="Login" method="post">
+            <div class="username">
+                <label>Username</label>
+                <input name="username" placeholder="Masukkan username Anda" required />
+            </div>
+            <div class="password">
+                <label>Password</label>
+                <input name="password" type="password" placeholder="Masukkan password Anda" required />
+            </div>
+            <div class="loginbtn">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="regist">Belum punya akun? <a href="Register">Registrasi disini</a></div>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+        background-color: #f6f2f7;
+        font-family: Arial, sans-serif;
+    }
+    .content {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #e6ccf7;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .Title {
+        color: #6d597a;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .username {
+        font-weight: bold;
+        color: #6d597a;
+    }
+
+    .password {
+        font-weight: bold;
+        padding-top: 15px;
+        color: #6d597a;
+    }
+
+    input {
+        width: 100%;
+        padding: 7px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .loginbtn{
+        padding-top: 25px;
+        padding-bottom: 15px;
+    }
+    button {
+        width: 100%;
+        background-color: #ffcad4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ffe9ec;
+    }
+
+    .regist{
+        text-align: center;
+        color: #987784;
+    }
+    .regist a{
+        color: #987784;
+        text-decoration: none;
+    }
+</style>

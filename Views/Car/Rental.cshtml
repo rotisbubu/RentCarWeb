@@ -1,0 +1,136 @@
+﻿@model RentCarWeb.Models.Car
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="rental-container">
+        <h1 class="page-title">Sewa Mobil</h1>
+        <img src="@ViewData["ImageLink"]" />
+
+        <!-- Car Information Table -->
+        <div class="car-info">
+            <h3>Informasi Mobil</h3>
+            <table class="info-table">
+                <tr>
+                    <td>Tipe Mobil</td>
+                    <td>@Model.name</td>
+                </tr>
+                <tr>
+                    <td>Nama Mobil</td>
+                    <td>@Model.name @Model.model (@Model.year)</td>
+                </tr>
+                <tr>
+                    <td>Transmisi</td>
+                    <td>@Model.transmission</td>
+                </tr>
+                <tr>
+                    <td>Jumlah Penumpang</td>
+                    <td>@Model.number_of_car_seats Penumpang</td>
+                </tr>
+                <tr>
+                    <td>Nama Penyewa</td>
+                    <td>@ViewData["Username"] (@ViewData["UserEmail"])</td>
+                </tr>
+                <tr>
+                    <td>Tanggal Sewa</td>
+                    <td>@ViewBag.PickupDate.ToString("dd MMMM yyyy") sampai @ViewBag.ReturnDate.ToString("dd MMMM yyyy")</td>
+                </tr>
+                <tr>
+                    <td>Harga Sewa</td>
+                    <td>Rp. @String.Format("{0:N0}", @Model.price_per_day) / hari</td>
+                </tr>
+                <tr>
+                    <td>Total Harga Sewa</td>
+                    <td>Rp. @String.Format("{0:N0}", (Model.price_per_day * ((DateTime)ViewBag.ReturnDate - (DateTime)ViewBag.PickupDate).Days))</td>
+                </tr>
+            </table>
+
+            <div class="btnContainer">
+                <form method="post" action="/Car/ConfirmRental">
+                    <input type="hidden" name="carId" value="@Model.Car_Id" />
+                    <input type="hidden" name="pickupDate" value="@ViewBag.PickupDate" />
+                    <input type="hidden" name="returnDate" value="@ViewBag.ReturnDate" />
+                    <button type="submit" class="rental-button">Sewa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+        background-color: #f9f0f7;
+        font-family: Arial, sans-serif;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .rental-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .page-title {
+        text-align: center;
+        color: #8a5a9b;
+    }
+
+    .rental-container img {
+        max-width: 520px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .car-info {
+        margin-top: 50px;
+        max-width: 500px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .info-table td {
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+    }
+
+    .info-table td:first-child {
+        font-weight: bold;
+        color: #555;
+        background-color: #f2f2f2;
+    }   
+
+    .btnContainer {
+        border: 1px;
+        border-color: #e0e0e0;
+    }
+    .rental-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #facbd4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .rental-button:hover {
+        background-color: #f4a6b1;
+    }
+</style>
